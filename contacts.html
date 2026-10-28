@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакти — Алгоритми та структури даних</title>
+  <meta name="description" content="Форма зворотного зв'язку для запитань та пропозицій щодо навчального курсу з алгоритмів.">
+  <meta name="author" content="Богдан Кунченко">
+
+  <link rel="canonical" href="https://kxndan.github.io/lab01-kunchenko/contacts.html">
+  <meta property="og:title" content="Алгоритми та структури даних — навчальний портал">
+  <meta property="og:description" content="Освітній ресурс про фундаментальні алгоритми, структури даних та оцінку обчислювальної складності.">
+  <meta property="og:image" content="https://kxndan.github.io/lab01-kunchenko/img/photo-1.jpg">
+  <meta property="og:url" content="https://kxndan.github.io/lab01-kunchenko/contacts.html">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+  <header class="hero">
+    <a href="index.html" class="site-title">Алгоритми та структури даних</a>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про напрям</a></li>
+        <li><a href="comparison.html">Порівняння</a></li>
+        <li><a href="gallery.html">Галерея</a></li>
+        <li><a href="application.html">Заявка</a></li>
+        <li><a href="pages/resources.html">Ресурси</a></li>
+        <li class="menu__contacts"><a href="contacts.html">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Зворотний зв'язок</h1>
+
+    <form action="https://httpbin.org/post" method="post">
+      
+      <!-- Явні підписи (for + id) -->
+      <label for="name">Ім'я</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+
+      <label for="email">Електронна пошта</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="subject">Тема звернення</label><br>
+      <select id="subject" name="subject">
+        <option value="question">Запитання</option>
+        <option value="suggestion">Пропозиція</option>
+        <option value="error">Повідомлення про помилку на сайті</option>
+      </select><br><br>
+
+      <label for="message">Текст повідомлення</label><br>
+      <textarea id="message" name="message" rows="5" minlength="10" required></textarea><br><br>
+
+      <!-- Вкладений підпис (label огортає input) -->
+      <label>
+        <input type="checkbox" name="consent" required>
+        Погоджуюсь на обробку персональних даних
+      </label><br><br>
+
+      <button type="submit" class="btn">Надіслати</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <a href="privacy.html">Політика конфіденційності</a>
+    <address>
+      Контакти: <a href="mailto:b.kunchenko@student.onua.edu.ua">b.kunchenko@student.onua.edu.ua</a> | 
+      Тел: <a href="tel:+380671234567">+38 (067) 123-45-67</a>
+    </address>
+    <p>&copy; 2026 Богдан Кунченко</p>
+  </footer>
+  <a href="#top" class="back-to-top" aria-label="Нагору">↑</a>
+</body id="top">
+</html>

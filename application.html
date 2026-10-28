@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заявка на проєкт — Алгоритми та структури даних</title>
+  <meta name="description" content="Реєстраційна анкета для участі в практичному проєкті з дослідження алгоритмів і структур даних.">
+  <meta name="author" content="Богдан Кунченко">
+
+  <link rel="canonical" href="https://kxndan.github.io/lab01-kunchenko/application.html">
+  <meta property="og:title" content="Алгоритми та структури даних — навчальний портал">
+  <meta property="og:description" content="Освітній ресурс про фундаментальні алгоритми, структури даних та оцінку обчислювальної складності.">
+  <meta property="og:image" content="https://kxndan.github.io/lab01-kunchenko/img/photo-1.jpg">
+  <meta property="og:url" content="https://kxndan.github.io/lab01-kunchenko/application.html">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+  <header class="hero">
+    <a href="index.html" class="site-title">Алгоритми та структури даних</a>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про напрям</a></li>
+        <li><a href="comparison.html">Порівняння</a></li>
+        <li><a href="gallery.html">Галерея</a></li>
+        <li><a href="application.html">Заявка</a></li>
+        <li><a href="pages/resources.html">Ресурси</a></li>
+        <li class="menu__contacts"><a href="contacts.html">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Заявка на участь у проєкті</h1>
+
+    <div class="media">
+      <span class="media__icon" aria-hidden="true">ⓘ</span>
+      <p class="media__body">Підказка: оцініть алгоритмічну складність завдання перед заповненням анкети.</p>
+    </div>
+
+    <form action="https://httpbin.org/post" method="post">
+
+      <!-- Група 1: Персональні дані -->
+      <fieldset>
+        <legend>Відомості про учасника</legend>
+
+        <label for="fullname">Прізвище та ім'я</label><br>
+        <input type="text" id="fullname" name="fullname" minlength="5" maxlength="100" autocomplete="name" required><br><br>
+
+        <label for="email">Електронна пошта</label><br>
+        <input type="email" id="email" name="email" autocomplete="email" required><br><br>
+
+        <label for="phone">Телефон</label><br>
+        <input type="tel" id="phone" name="phone" pattern="\+380\d{9}" title="Формат: +380671234567" autocomplete="tel" required><br><br>
+
+        <label for="course">Курс навчання</label><br>
+        <input type="number" id="course" name="course" min="1" max="4" step="1" required>
+      </fieldset><br>
+
+      <!-- Група 2: Рівень підготовки (Radio) -->
+      <fieldset>
+        <legend>Рівень підготовки</legend>
+
+        <label>
+          <input type="radio" name="level" value="junior" checked> Початківець
+        </label>
+        <label>
+          <input type="radio" name="level" value="middle"> Середній
+        </label>
+        <label>
+          <input type="radio" name="level" value="senior"> Просунутий
+        </label>
+      </fieldset><br>
+
+      <!-- Група 3: Параметри участі (Checkbox, Date, Select) -->
+      <fieldset>
+        <legend>Параметри участі</legend>
+
+        <label for="startdate">Дата початку участі</label><br>
+        <input type="date" id="startdate" name="startdate" min="2026-09-15" required><br><br>
+
+        <p>Напрями інтересу:</p>
+        <label>
+          <input type="checkbox" name="interests" value="sorting"> Алгоритми сортування
+        </label><br>
+        <label>
+          <input type="checkbox" name="interests" value="searching"> Алгоритми пошуку
+        </label><br>
+        <label>
+          <input type="checkbox" name="interests" value="graphs"> Графи
+        </label><br>
+        <label>
+          <input type="checkbox" name="interests" value="trees"> Дерева та структури даних
+        </label><br><br>
+
+        <label for="stack">Технологічний стек</label><br>
+        <select id="stack" name="stack" required>
+          <option value="" disabled selected>Оберіть основну технологію</option>
+          <optgroup label="Мови програмування">
+            <option value="python">Python</option>
+            <option value="cpp">C++</option>
+            <option value="java">Java</option>
+          </optgroup>
+          <optgroup label="Клієнтські технології">
+            <option value="js">JavaScript</option>
+            <option value="ts">TypeScript</option>
+          </optgroup>
+        </select>
+      </fieldset><br>
+
+      <!-- Група 4: Додаткова інформація (Textarea, File) -->
+      <fieldset>
+        <legend>Додаткові дані</legend>
+
+        <label for="experience">Короткий опис досвіду</label><br>
+        <textarea id="experience" name="experience" rows="5" minlength="20" maxlength="500" placeholder="Розкажіть коротко про свій досвід у програмуванні..." required></textarea><br><br>
+
+        <label for="portfolio">Файл із портфоліо (необов'язково)</label><br>
+        <input type="file" id="portfolio" name="portfolio" accept=".pdf,.doc,.docx">
+      </fieldset><br>
+
+      <!-- Три типи кнопок -->
+      <button type="submit" class="btn">Надіслати заявку</button>
+      <button type="reset" class="btn">Очистити форму</button>
+      <button type="button" class="btn" id="preview-btn">Попередній перегляд</button>
+
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <address>
+      Контакти: <a href="mailto:b.kunchenko@student.onua.edu.ua">b.kunchenko@student.onua.edu.ua</a> | 
+      Тел: <a href="tel:+380671234567">+38 (067) 123-45-67</a>
+    </address>
+    <p>&copy; 2026 Богдан Кунченко.</p>
+  </footer>
+  <a href="#top" class="back-to-top" aria-label="Нагору">↑</a>
+</body id="top">
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Галерея — Алгоритми та структури даних</title>
+  <meta name="description" content="Мультимедійна галерея з ілюстраціями алгоритмів, відеоматеріалами та картою розташування кафедри.">
+  <meta name="author" content="Богдан Кунченко">
+
+  <link rel="canonical" href="https://kxndan.github.io/lab01-kunchenko/gallery.html">
+  <meta property="og:title" content="Алгоритми та структури даних — навчальний портал">
+  <meta property="og:description" content="Освітній ресурс про фундаментальні алгоритми, структури даних та оцінку обчислювальної складності.">
+  <meta property="og:image" content="https://kxndan.github.io/lab01-kunchenko/img/photo-1.jpg">
+  <meta property="og:url" content="https://kxndan.github.io/lab01-kunchenko/gallery.html">
+  <meta property="og:type" content="website">
+</head>
+<body id="top">
+
+  <!-- Шапка сайту -->
+  <header class="hero">
+    <a href="index.html" class="site-title">Алгоритми та структури даних</a>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про напрям</a></li>
+        <li><a href="comparison.html">Порівняння</a></li>
+        <li><a href="gallery.html" aria-current="page">Галерея</a></li>
+        <li><a href="application.html">Заявка</a></li>
+        <li><a href="pages/resources.html">Ресурси</a></li>
+        <li class="menu__contacts"><a href="contacts.html">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Основний вміст -->
+  <main class="container">
+    <h1>Медіагалерея навчального сайту</h1>
+
+    <!-- Секція зображень: Адаптивна галерея на Flexbox -->
+    <section>
+      <h2>Ілюстрації до теми</h2>
+
+      <div class="card-grid">
+        <!-- Фото 1: Адаптивне через <picture>, Тип alt 1 (інформативний), без lazy (LCP) -->
+        <figure class="card">
+          <picture>
+            <source srcset="img/photo-1.webp" type="image/webp">
+            <img src="img/photo-1.jpg" alt="Робоче місце розробника з відкритим вихідним кодом на моніторі" width="1200" height="800">
+          </picture>
+          <figcaption>Графи та топологія мережевих структур. Автор: Alina Grubnyak, Unsplash License.</figcaption>
+        </figure>
+
+        <!-- Фото 2: Тип alt 1 (інформативний) -->
+        <figure class="card">
+          <img src="img/photo-2.jpg" alt="Серверна стійка дата-центру з миготливими індикаторами мережевого обладнання" width="1200" height="800" loading="lazy">
+          <figcaption>Аналіз та оптимізація алгоритмічної складності. Автор: Compagnons, Unsplash License.</figcaption>
+        </figure>
+
+        <!-- Фото 3: Тип alt 1 (інформативний) -->
+        <figure class="card">
+          <img src="img/photo-3.jpg" alt="Клавіатура комп'ютера з підсвічуванням клавіш" width="1200" height="800" loading="lazy">
+          <figcaption>Структуризація та візуалізація масивів даних. Автор: Deng Xiang, Unsplash License.</figcaption>
+        </figure>
+
+        <!-- Фото 4: Тип alt 2 (декоративне зображення - alt порожній) -->
+        <figure class="card">
+          <img src="img/photo-4.jpg" alt="" width="1200" height="800" loading="lazy">
+          <figcaption>Апаратне середовище для високонавантажених обчислень. Автор: imgix, Unsplash License.</figcaption>
+        </figure>
+
+        <!-- Фото 5: Тип alt 3 (складна схема з коротким alt і детальним поясненням у підписі) -->
+        <figure class="card">
+          <img src="img/photo-5.jpg" alt="Схема етапів алгоритму сортування злиттям" width="1200" height="800" loading="lazy">
+          <figcaption>
+            Програмна реалізація базових алгоритмів. Автор: Juanjo Jaramillo, Unsplash License.
+          </figcaption>
+        </figure>
+
+        <!-- Фото 6: Тип alt 4 (зображення-посилання з функціональним описом переходу) -->
+        <figure class="card">
+          <a href="pages/resources.html">
+            <img src="img/photo-6.jpg" alt="Перейти до розділу «Ресурси» для ознайомлення з глосарієм" width="1200" height="800" loading="lazy">
+          </a>
+          <figcaption>Схематичне проєктування алгоритмів та блок-схем. Автор: Kelly Sikkema, Unsplash License.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Секція векторної графіки -->
+    <section>
+      <h2>Векторна графіка</h2>
+      <figure class="card">
+        <img src="img/icon.svg" alt="Векторна піктограма фрагмента програмного коду" width="64" height="64">
+        <figcaption>Піктограма формату SVG зі зміненим фірмовим кольором заливки.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Секція відео -->
+    <section>
+      <h2>Відеоматеріали</h2>
+      <figure class="card">
+        <video controls width="640" preload="metadata">
+          <source src="video/demo.mp4" type="video/mp4">
+          <track src="video/demo-uk.vtt" kind="subtitles" srclang="uk" label="Українські субтитри" default>
+          Ваш браузер не підтримує відтворення відео. 
+          <a href="video/demo.mp4">Завантажте відео за цим посиланням</a>.
+        </video>
+        <figcaption>Демонстраційний огляд навігації та сторінок сайту із синхронними субтитрами.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Секція інтерактивної карти -->
+    <section>
+      <h2>Розташування</h2>
+      <figure class="card">
+        <iframe 
+          src="https://www.openstreetmap.org/export/embed?bbox=30.73692172765732%2C46.47724541736318%2C30.74217885732651%2C46.47949142440513&amp;layer=mapnik" 
+          width="425" 
+          height="350" 
+          title="Карта розташування закладу освiти" 
+          loading="lazy" 
+          sandbox="allow-scripts allow-same-origin">
+        </iframe>
+      </figure>
+    </section>
+  </main>
+
+  <!-- Підвал сайту -->
+  <footer class="site-footer">
+    <a href="privacy.html">Політика конфіденційності</a>
+    <address>
+      Контакти: <a href="mailto:b.kunchenko@student.onua.edu.ua">b.kunchenko@student.onua.edu.ua</a> | 
+      Тел: <a href="tel:+380671234567">+38 (067) 123-45-67</a>
+    </address>
+    <p>&copy; 2026 Богдан Кунченко</p>
+  </footer>
+
+  <a href="#top" class="back-to-top" aria-label="Нагору">↑</a>
+
+</body>
+</html>

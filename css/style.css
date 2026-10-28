@@ -1,0 +1,488 @@
+/* 
+   0. Глобальне скидання, блокова модель та плавний скрол
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+/* Захист від розриву довгих слів (адреси пошти, довгі посилання) */
+body {
+  overflow-wrap: anywhere;
+}
+
+/* 
+   1. Вебшрифти (@font-face)
+*/
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 
+   2. Змінні (:root): палітра, шкала та рівні z-index
+*/
+
+:root {
+  /* Палітра HSL */
+  --color-primary: hsl(219, 53%, 26%);
+  --color-primary-soft: hsl(219, 53%, 92%);
+  --color-primary-dark: hsl(219, 53%, 18%);
+  --color-text: hsl(0, 0%, 10%);
+  --color-muted: hsl(0, 0%, 40%);
+  --color-surface: hsl(0, 0%, 100%);
+  --color-accent: hsl(4, 74%, 42%);
+
+  /* Відступи */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* z-index */
+  --z-header: 100;
+  --z-fixed: 200;
+}
+
+/* 
+   3. Базові стилі сторінки
+*/
+
+body {
+  font-family: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Розумний контейнер на math-функції min() (Крок 11) */
+.container {
+  width: min(100% - 2 * var(--space-md), 1100px);
+  margin-inline: auto;
+}
+
+.content {
+  max-width: 65ch;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+input, textarea, select, button {
+  font: inherit;
+}
+
+code, pre {
+  font-family: "Fira Code", Consolas, "Courier New", monospace;
+}
+
+/* 
+   4. Плавна типографіка (clamp)
+*/
+
+/* Заголовок h1 плавно масштабується від 1.75rem до 3rem без @media (Крок 11) */
+h1 {
+  font-size: clamp(1.75rem, 1.2rem + 2.5vw, 3rem);
+  line-height: 1.2;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+h2, h3, h4 {
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h2 { font-size: 1.953rem; line-height: 1.2; }
+h3 { font-size: 1.563rem; line-height: 1.25; }
+h4 { font-size: 1.25rem; line-height: 1.3; }
+
+h2 + p { font-weight: 600; }
+h2 ~ p { color: var(--color-muted); }
+
+/* 
+   5. Макет сторінки на іменованих областях CSS Grid (Mobile-First) (Кроки 5, 10)
+*/
+
+/* Базовий мобільний вигляд: 1 колонка */
+.page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "main"      /* на вузькому екрані вміст ВИЩЕ панелі */
+    "sidebar"
+    "footer";
+  gap: var(--space-md);
+  min-height: 100vh;
+}
+
+.page__header  { grid-area: header; width: 100%; }
+.page__sidebar { grid-area: sidebar; height: fit-content; margin-inline: var(--space-md); }
+.page__main    { grid-area: main; margin-inline: var(--space-md); }
+.page__footer  { grid-area: footer; width: 100%; }
+
+/* Перша контрольна точка: планшети та ПК (від 768px) - 2 колонки (Крок 10) */
+@media (min-width: 768px) {
+  .page {
+    grid-template-columns: 240px 1fr;
+    grid-template-areas:
+      "header  header"
+      "sidebar main"
+      "footer  footer";
+    gap: var(--space-lg);
+  }
+
+  .page__sidebar {
+    margin-inline: 0;
+    margin-left: var(--space-md);
+  }
+
+  .page__main {
+    margin-inline: 0;
+    margin-right: var(--space-md);
+  }
+}
+
+/* Друга контрольна точка: широкі екрани (від 1200px) - розширюємо бічну панель (Крок 10) */
+@media (min-width: 1200px) {
+  .page {
+    grid-template-columns: 280px 1fr;
+  }
+}
+
+/* 
+   6. Панель показників на Grid (Крок 9)
+*/
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  place-items: center;
+  text-align: center;
+}
+
+.stats__item {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  padding: var(--space-md);
+  border-radius: 8px;
+  font-weight: 700;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 
+   7. Галерея на CSS Grid (Крок 7)
+*/
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.card-grid .card {
+  margin-bottom: 0;
+  height: 100%;
+}
+
+.card-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* 
+   8. Адаптивні таблиці (Крок 12)
+*/
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;  
+  margin-bottom: var(--space-md);
+  border-radius: 6px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 580px;       
+}
+
+th, td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  overflow-wrap: normal;   
+  word-break: normal;
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--color-primary-soft);
+}
+
+/* 
+   9. Шапка, навігація, картки та елементи інтерфейсу
+*/
+
+header.hero {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background:
+    linear-gradient(rgb(31 56 100 / 80%), rgb(31 56 100 / 80%)),
+    url("../img/photo-1.jpg") center / cover no-repeat;
+  color: #ffffff;
+  padding: var(--space-md) var(--space-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.site-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu a {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.menu a:not([aria-current="page"]) {
+  opacity: 0.85;
+}
+
+.card {
+  position: relative;
+  background: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--space-sm);
+  margin-bottom: var(--space-md);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: var(--color-accent);
+  color: #ffffff;
+  padding: 2px var(--space-xs);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.card--accent {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #ffffff;
+  border-left: none;
+}
+
+.card--accent h2,
+.card--accent h3 {
+  color: #ffffff;
+}
+
+.card--accent ul li:last-child {
+  color: var(--color-primary-soft);
+}
+
+.btn {
+  display: inline-block;
+  min-height: 44px; /* Мінімальна зона натискання за WCAG 2.2 */
+  padding: var(--space-xs) var(--space-md);
+  background: var(--color-primary);
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  margin-right: var(--space-xs);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background: var(--color-primary-dark);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.back-to-top {
+  position: fixed;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  z-index: var(--z-fixed);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-primary);
+  color: #ffffff;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 
+   10. Форми, цитати та доступність
+*/
+
+fieldset {
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+fieldset label {
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  max-width: 100%;
+}
+
+legend {
+  font-weight: 600;
+  color: var(--color-primary);
+  padding: 0 var(--space-sm);
+}
+
+input[required], textarea[required], select[required] {
+  border-left: 3px solid var(--color-primary);
+}
+
+label:has(+ br + input[required])::after,
+label:has(+ br + textarea[required])::after,
+label:has(+ br + select[required])::after,
+label:has(+ input[required])::after {
+  content: " *";
+  color: var(--color-accent);
+}
+
+.quote {
+  border-left: 4px solid var(--color-primary);
+  padding-left: var(--space-md);
+  margin: var(--space-md) 0;
+  font-style: italic;
+  color: var(--color-muted);
+}
+
+code {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.site-footer {
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.site-footer a { color: #ffffff; }
+
+main a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+a[href^="http"]::after { content: " ↗"; }
+a[href$=".pdf"]::after { content: " (PDF)"; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

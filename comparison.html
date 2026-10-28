@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Детальне порівняння п'яти ключових алгоритмів сортування: аналіз обчислювальної складності, стабільності, року створення та сфер їх практичного застосування.">
+    <meta name="author" content="Богдан Кунченко">
+
+    <link rel="canonical" href="https://kxndan.github.io/lab01-kunchenko/comparison.html">
+    <meta property="og:title" content="Алгоритми та структури даних — навчальний портал">
+    <meta property="og:description" content="Освітній ресурс про фундаментальні алгоритми, структури даних та оцінку обчислювальної складності.">
+    <meta property="og:image" content="https://kxndan.github.io/lab01-kunchenko/img/photo-1.jpg">
+    <meta property="og:url" content="https://kxndan.github.io/lab01-kunchenko/comparison.html">
+    <meta property="og:type" content="website">
+
+    <title>Порівняльний аналіз популярних алгоритмів сортування даних</title>
+</head>
+<body>
+    <header class="hero">
+    <a href="index.html" class="site-title">Алгоритми та структури даних</a>
+    <nav>
+        <ul class="menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про напрям</a></li>
+        <li><a href="comparison.html">Порівняння</a></li>
+        <li><a href="gallery.html">Галерея</a></li>
+        <li><a href="application.html">Заявка</a></li>
+        <li><a href="pages/resources.html">Ресурси</a></li>
+        <li class="menu__contacts"><a href="contacts.html">Контакти</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <main class="container">
+        <h1>Порівняння алгоритмів сортування</h1>
+
+        <section>
+            <h2>Загальні характеристики алгоритмів</h2>
+            <div class="table-wrap">
+                <table border="1">
+                    <caption>Порівняння п'яти алгоритмів сортування</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Алгоритм</th>
+                            <th scope="col">Рік появи</th>
+                            <th scope="col">Складність у середньому</th>
+                            <th scope="col">Стабільність</th>
+                            <th scope="col">Застосування</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Бульбашкове</th>
+                            <td><time datetime="1956">1956</time></td>
+                            <td>O(n²)</td>
+                            <td>так</td>
+                            <td>навчальні приклади</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Швидке</th>
+                            <td><time datetime="1959">1959</time></td>
+                            <td>O(n log n)</td>
+                            <td>ні</td>
+                            <td>загального призначення</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Злиттям</th>
+                            <td><time datetime="1945">1945</time></td>
+                            <td>O(n log n)</td>
+                            <td>так</td>
+                            <td>сортування зв'язаних списків і зовнішніх файлів</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Вставками</th>
+                            <td><time datetime="1946">1946</time></td>
+                            <td>O(n²)</td>
+                            <td>так</td>
+                            <td>невеликі або майже впорядковані масиви</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Пірамідальне</th>
+                            <td><time datetime="1964">1964</time></td>
+                            <td>O(n log n)</td>
+                            <td>ні</td>
+                            <td>системи реального часу з обмеженою пам'яттю</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">Усього розглянуто 5 алгоритмів сортування</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>Складність у найкращому та найгіршому випадках</h2>
+            <div class="table-wrap">
+                <table border="1">
+                    <caption>Межі складності алгоритмів сортування</caption>
+                    <thead>
+                        <tr>
+                            <th rowspan="2" scope="col">Алгоритм</th>
+                            <th colspan="2" scope="colgroup">Складність</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Найкраща</th>
+                            <th scope="col">Найгірша</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Бульбашкове</th>
+                            <td>O(n)</td>
+                            <td>O(n²)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Швидке</th>
+                            <td>O(n log n)</td>
+                            <td>O(n²)</td>
+                        </tr>
+                    </tbody>
+                </div>
+            </table>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+     <a href="privacy.html">Політика конфіденційності</a>
+        <address>
+            Богдан Кунченко, група КН-21<br>
+            <a href="mailto:b.kunchenko@student.onua.edu.ua">b.kunchenko@student.onua.edu.ua</a><br>
+            <a href="tel:+380671234567">+38 (067) 123-45-67</a>
+        </address>
+        <p>&copy; 2026 Богдан Кунченко</p>
+    </footer>
+    <a href="#top" class="back-to-top" aria-label="Нагору">↑</a>
+</body id="top">
+</html>
