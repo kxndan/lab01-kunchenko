@@ -6,32 +6,85 @@
   <title>Довідник дизайн-системи — Алгоритми та структури даних</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Локальні стилі для вітрини довідника */
+    /* Акуратне оформлення вітрини довідника */
     .sg-section { margin-bottom: var(--space-2xl); }
-    .sg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-bottom: var(--space-md); }
-    .color-swatch { padding: var(--space-md); border-radius: 6px; font-weight: 600; border: 1px solid #d0d7de; }
-    .sg-preview { padding: var(--space-md); border: 1px dashed var(--color-primary); border-radius: 6px; margin-bottom: var(--space-sm); display: flex; gap: var(--space-md); align-items: center; flex-wrap: wrap; }
-    pre { background: #f6f8fa; padding: var(--space-sm); border-radius: 6px; overflow-x: auto; font-size: 0.85rem; }
+    .sg-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+      gap: var(--space-md); 
+      margin-bottom: var(--space-md); 
+    }
+    .color-swatch { 
+      padding: var(--space-md); 
+      border-radius: 8px; 
+      font-weight: 600; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 90px;
+    }
+    .sg-preview { 
+      padding: var(--space-lg); 
+      background: #ffffff;
+      border: 1px dashed #c0c7d0; 
+      border-radius: 8px; 
+      margin-bottom: var(--space-md); 
+      display: flex; 
+      gap: var(--space-md); 
+      align-items: center; 
+      flex-wrap: wrap; 
+    }
+    pre { 
+      background: #f6f8fa; 
+      padding: var(--space-md); 
+      border-radius: 6px; 
+      overflow-x: auto; 
+      font-size: 0.9rem; 
+      border-left: 3px solid var(--color-primary);
+    }
+    /* Виправлення невидимого заголовка в акцентній картці */
+    .card--accent h4 {
+      color: #ffffff !important;
+      margin-top: 0;
+    }
+    .card h4 {
+      margin-top: 0;
+    }
   </style>
 </head>
 <body class="container">
 
-  <header class="hero" style="margin-top: var(--space-md);">
-    <a href="index.html" class="site-title">← На головну сайту</a>
-    <h1 style="color: #fff; margin: var(--space-sm) 0 0 0;">Довідник дизайн-системи</h1>
+  <!-- Акуратна, збалансована шапка -->
+  <header class="hero" style="margin-top: var(--space-md); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div>
+      <h1 style="color: #ffffff; margin: 0; font-size: 2rem;">Довідник дизайн-системи</h1>
+      <p style="color: rgba(255,255,255,0.85); margin: var(--space-xs) 0 0 0;">Єдине джерело правди для порталу «Алгоритми та структури даних»</p>
+    </div>
+    <a href="index.html" class="btn btn--outline" style="color: #ffffff; border-color: #ffffff; margin: 0;">← На головну сайту</a>
   </header>
 
   <main>
-    <p class="lead">Єдине джерело правди для освітнього порталу «Алгоритми та структури даних»: токени, компоненти та правила їх застосування.</p>
-
     <!-- РІВЕНЬ 1: ТОКЕНИ -->
     <section class="sg-section">
-      <h2>1. Кольорові токени (HSL)</h2>
+      <h2>1. Кольорові токени (HSL палітра 60–30–10)</h2>
       <div class="sg-grid">
-        <div class="color-swatch" style="background: hsl(219, 53%, 26%); color: #fff;">--color-primary<br>hsl(219 53% 26%)</div>
-        <div class="color-swatch" style="background: hsl(219, 53%, 92%); color: #1a1a1a;">--color-primary-soft<br>hsl(219 53% 92%)</div>
-        <div class="color-swatch" style="background: hsl(219, 53%, 18%); color: #fff;">--color-primary-dark<br>hsl(219 53% 18%)</div>
-        <div class="color-swatch" style="background: hsl(4, 74%, 42%); color: #fff;">--color-accent<br>hsl(4 74% 42%)</div>
+        <div class="color-swatch" style="background: hsl(219, 53%, 26%); color: #ffffff;">
+          <span>--color-primary (30%)</span>
+          <code>hsl(219 53% 26%)</code>
+        </div>
+        <div class="color-swatch" style="background: hsl(219, 53%, 92%); color: #1a1a1a; border: 1px solid #d0d7de;">
+          <span>--color-primary-soft</span>
+          <code>hsl(219 53% 92%)</code>
+        </div>
+        <div class="color-swatch" style="background: hsl(219, 53%, 18%); color: #ffffff;">
+          <span>--color-primary-dark</span>
+          <code>hsl(219 53% 18%)</code>
+        </div>
+        <div class="color-swatch" style="background: #c0392b; color: #ffffff;">
+          <span>--color-accent (10%)</span>
+          <code>#c0392b (Акцент)</code>
+        </div>
       </div>
     </section>
 
@@ -42,55 +95,56 @@
       <!-- Компонент 1: Кнопка -->
       <article class="card">
         <h3>Кнопка (.btn)</h3>
-        <p><strong>Призначення:</strong> Елемент для виклику дії користувача або переходу за сценарієм.</p>
+        <p><strong>Призначення:</strong> Елемент для виклику головної чи другорядної дії користувача.</p>
+        
         <div class="sg-preview">
           <a href="#" class="btn btn--primary">Головна дія (.btn--primary)</a>
           <a href="#" class="btn btn--outline">Другорядна дія (.btn--outline)</a>
-          <button class="btn" disabled>Вимкнена дія (disabled)</button>
+          <button class="btn" disabled style="opacity: 0.6; cursor: not-allowed;">Вимкнена дія (disabled)</button>
         </div>
-        <pre><code>&lt;a href="#" class="btn btn--primary"&gt;Почати навчання →&lt;/a&gt;
-&lt;a href="#" class="btn btn--outline"&gt;Про напрям&lt;/a&gt;</code></pre>
-        <p><strong>Вимоги доступності:</strong> Для дій брати <code>&lt;button&gt;</code>, для переходу <code>&lt;a href&gt;</code>. Мінімальний розмір 44×44px для сенсорних екранів (WCAG 2.5.5).</p>
-        <p><strong>Коли НЕ застосовувати:</strong> Не використовувати для звичайних навігаційних посилань у списку меню (там використовуються прості <code>&lt;a&gt;</code>).</p>
+
+        <pre><code>&lt;a href="pages/resources.html" class="btn btn--primary"&gt;Почати навчання →&lt;/a&gt;
+&lt;a href="about.html" class="btn btn--outline"&gt;Про напрям&lt;/a&gt;</code></pre>
+
+        <p><strong>Вимоги доступності:</strong> Для дій брати <code>&lt;button&gt;</code>, для переходів — <code>&lt;a href&gt;</code>. Мінімальна область натискання 44×44px за WCAG 2.5.5.</p>
+        <p><strong>Коли НЕ застосовувати:</strong> Не використовувати клас <code>.btn</code> для пунктів верхнього навігаційного меню.</p>
       </article>
 
       <!-- Компонент 2: Картка -->
-      <article class="card" style="margin-top: var(--space-md);">
+      <article class="card" style="margin-top: var(--space-lg);">
         <h3>Картка (.card)</h3>
-        <p><strong>Призначення:</strong> Контейнер для візуального відокремлення та групування пов'язаної інформації за гештальт-принципом спільної області.</p>
-        <div class="sg-preview">
-          <div class="card" style="margin: 0; width: 100%; max-width: 350px;">
+        <p><strong>Призначення:</strong> Контейнер для візуального групування пов'язаної інформації за гештальт-принципом спільної області.</p>
+        
+        <div class="sg-preview" style="gap: var(--space-lg); align-items: stretch;">
+          <div class="card" style="margin: 0; flex: 1; min-width: 260px;">
             <h4>Звичайна картка</h4>
-            <p>Вміст картки з відступами системи.</p>
+            <p>Стандартний інформаційний блок на світлому фоні з лівою акцентною смугою.</p>
           </div>
-          <div class="card card--accent" style="margin: 0; width: 100%; max-width: 350px;">
+          <div class="card card--accent" style="margin: 0; flex: 1; min-width: 260px;">
             <h4>Акцентна картка</h4>
-            <p>Для важливих блоків або сайдбарів.</p>
+            <p>Блок із градієнтом для важливих повідомлень або сайдбару сторінки.</p>
           </div>
         </div>
+
         <pre><code>&lt;section class="card"&gt;...&lt;/section&gt;
-&lt;section class="card card--accent"&gt;...&lt;/section&gt;</code></pre>
-        <p><strong>Коли НЕ застосовувати:</strong> Не загортати дрібні однорядкові написи; картка призначена для цілісних інформаційних вузлів.</p>
+&lt;aside class="card card--accent"&gt;...&lt;/aside&gt;</code></pre>
+
+        <p><strong>Коли НЕ застосовувати:</strong> Не загортати короткі однорядкові написи або поодинокі посилання.</p>
       </article>
 
       <!-- Компонент 3: Поле форми -->
-      <article class="card" style="margin-top: var(--space-md);">
+      <article class="card" style="margin-top: var(--space-lg);">
         <h3>Поле форми з підписом</h3>
-        <p><strong>Призначення:</strong> Збір текстових даних користувача із вбудованою доступністю.</p>
+        <p><strong>Призначення:</strong> Збір даних від користувача із забезпеченням повної доступності для скрінрідерів.</p>
+        
         <div class="sg-preview" style="flex-direction: column; align-items: flex-start;">
-          <label for="demo-input">Електронна пошта *</label>
-          <input type="email" id="demo-input" required placeholder="name@example.com">
+          <!-- Прибрано текстову зірочку, щоб селектор не дублював її -->
+          <label for="demo-email">Електронна пошта</label>
+          <input type="email" id="demo-email" required placeholder="name@example.com" style="min-width: 280px;">
         </div>
+
         <pre><code>&lt;label for="email"&gt;Електронна пошта&lt;/label&gt;
 &lt;input type="email" id="email" required&gt;</code></pre>
-        <p><strong>Вимоги доступності:</strong> Зв'язок <code>for + id</code> обов'язковий. Підпис ніколи не замінюється атрибутом <code>placeholder</code>.</p>
-      </article>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <p>© 2026 Богдан Кунченко, КН-21. Документація дизайн-системи.</p>
-  </footer>
-
-</body>
-</html>
+        <p><strong>Вимоги доступності:</strong> Зв'язок <code>for + id</code> обов'язковий. Підпис ніколи не замінюється атрибутом <code>placeholder</code> (критерій WCAG F94).</p>
+      </arti

@@ -1,7 +1,7 @@
 # Навчальний вебпортал «Алгоритми та структури даних»
 
 Підсумковий проєкт з дисципліни «Вебтехнології та вебдизайн»  
-**Студент:** Богдан Кунченко, група КН-21  
+**Студент:** Богдан Кунченко, група КН21Б  
 **Опублікований сайт:** [https://kxndan.github.io/lab01-kunchenko/](https://kxndan.github.io/lab01-kunchenko/)  
 **Довідник дизайн-системи:** [https://kxndan.github.io/lab01-kunchenko/styleguide.html](https://kxndan.github.io/lab01-kunchenko/styleguide.html)
 
