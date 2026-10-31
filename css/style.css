@@ -356,9 +356,12 @@ header.hero {
 }
 
 .btn {
-  display: inline-block;
-  min-height: 44px; /* Мінімальна зона натискання за WCAG 2.2 */
-  padding: var(--space-xs) var(--space-md);
+  display: inline-flex;
+  align-items: center;   
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 var(--space-md); /* 16px відступи по боках */
+  
   background: var(--color-primary);
   color: #ffffff;
   text-decoration: none;
@@ -485,4 +488,115 @@ a[href$=".pdf"]::after { content: " (PDF)"; }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* 
+   11. Модульна 12-колонкова сітка, ієрархія та ритм (Лабораторна 13)
+*/
+
+/* 12-колонковий контейнер сторінки (Крок 5) */
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-lg);
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+
+.page-grid .card {
+  height: 100%;
+  margin-bottom: 0;
+}
+
+/* Розподіл колонок у сітці */
+.span-12 { grid-column: span 12; }
+.span-8  { grid-column: span 8; }
+.span-4  { grid-column: span 4; }
+
+/* На мобільних екранах (<768px) усі блоки розгортаються на 12 колонок (в 1 стовпчик) */
+@media (max-width: 768px) {
+  .span-8,
+  .span-4 {
+    grid-column: span 12;
+  }
+}
+
+/* Hero-блок точки входу */
+.hero-intro {
+  padding: var(--space-lg) 0;
+}
+
+.hero-intro .lead {
+  font-size: 1.25rem;
+  color: var(--color-muted);
+  max-width: 65ch;
+  margin-bottom: var(--space-lg);
+}
+
+/* Група кнопок заклику до дії */
+.cta-group {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+}
+
+/* Головний заклик до дії: 10% акцентного кольору (Крок 9, 11) */
+.btn--primary {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.btn--primary:hover {
+  background: hsl(4, 74%, 35%);
+}
+
+/* Принцип близькості Гештальт-теорії: відступ ПЕРЕД заголовком більший, ніж ПІСЛЯ (Крок 8) */
+h2 {
+  margin-top: var(--space-xl);  /* 32px — відокремлює від попереднього */
+  margin-bottom: var(--space-sm); /* 8px — тримає біля свого тексту */
+}
+
+/* Подвоєне "повітря" між смисловими блоками (Крок 10) */
+section + section {
+  margin-top: var(--space-2xl); /* 48px */
+}
+
+/* Центрування для Hero точки входу */
+.text-center {
+  text-align: center;
+}
+
+.text-center .lead {
+  margin-inline: auto;
+}
+
+.text-center .cta-group {
+  justify-content: center;
+}
+
+/* Елегантна контурна кнопка (Ghost button) */
+.btn--outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn--outline:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+}
+
+/* М'якший і благородніший акцент для головної кнопки */
+.btn--primary {
+  background: #c0392b;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.25);
+}
+
+.btn--primary:hover {
+  background: #a93226;
+  transform: translateY(-2px);
 }

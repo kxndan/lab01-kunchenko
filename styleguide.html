@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Довідник дизайн-системи — Алгоритми та структури даних</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Локальні стилі для вітрини довідника */
+    .sg-section { margin-bottom: var(--space-2xl); }
+    .sg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-bottom: var(--space-md); }
+    .color-swatch { padding: var(--space-md); border-radius: 6px; font-weight: 600; border: 1px solid #d0d7de; }
+    .sg-preview { padding: var(--space-md); border: 1px dashed var(--color-primary); border-radius: 6px; margin-bottom: var(--space-sm); display: flex; gap: var(--space-md); align-items: center; flex-wrap: wrap; }
+    pre { background: #f6f8fa; padding: var(--space-sm); border-radius: 6px; overflow-x: auto; font-size: 0.85rem; }
+  </style>
+</head>
+<body class="container">
+
+  <header class="hero" style="margin-top: var(--space-md);">
+    <a href="index.html" class="site-title">← На головну сайту</a>
+    <h1 style="color: #fff; margin: var(--space-sm) 0 0 0;">Довідник дизайн-системи</h1>
+  </header>
+
+  <main>
+    <p class="lead">Єдине джерело правди для освітнього порталу «Алгоритми та структури даних»: токени, компоненти та правила їх застосування.</p>
+
+    <!-- РІВЕНЬ 1: ТОКЕНИ -->
+    <section class="sg-section">
+      <h2>1. Кольорові токени (HSL)</h2>
+      <div class="sg-grid">
+        <div class="color-swatch" style="background: hsl(219, 53%, 26%); color: #fff;">--color-primary<br>hsl(219 53% 26%)</div>
+        <div class="color-swatch" style="background: hsl(219, 53%, 92%); color: #1a1a1a;">--color-primary-soft<br>hsl(219 53% 92%)</div>
+        <div class="color-swatch" style="background: hsl(219, 53%, 18%); color: #fff;">--color-primary-dark<br>hsl(219 53% 18%)</div>
+        <div class="color-swatch" style="background: hsl(4, 74%, 42%); color: #fff;">--color-accent<br>hsl(4 74% 42%)</div>
+      </div>
+    </section>
+
+    <!-- РІВЕНЬ 2: КОМПОНЕНТИ ТА ДОКУМЕНТУВАННЯ -->
+    <section class="sg-section">
+      <h2>2. Компоненти інтерфейсу</h2>
+
+      <!-- Компонент 1: Кнопка -->
+      <article class="card">
+        <h3>Кнопка (.btn)</h3>
+        <p><strong>Призначення:</strong> Елемент для виклику дії користувача або переходу за сценарієм.</p>
+        <div class="sg-preview">
+          <a href="#" class="btn btn--primary">Головна дія (.btn--primary)</a>
+          <a href="#" class="btn btn--outline">Другорядна дія (.btn--outline)</a>
+          <button class="btn" disabled>Вимкнена дія (disabled)</button>
+        </div>
+        <pre><code>&lt;a href="#" class="btn btn--primary"&gt;Почати навчання →&lt;/a&gt;
+&lt;a href="#" class="btn btn--outline"&gt;Про напрям&lt;/a&gt;</code></pre>
+        <p><strong>Вимоги доступності:</strong> Для дій брати <code>&lt;button&gt;</code>, для переходу <code>&lt;a href&gt;</code>. Мінімальний розмір 44×44px для сенсорних екранів (WCAG 2.5.5).</p>
+        <p><strong>Коли НЕ застосовувати:</strong> Не використовувати для звичайних навігаційних посилань у списку меню (там використовуються прості <code>&lt;a&gt;</code>).</p>
+      </article>
+
+      <!-- Компонент 2: Картка -->
+      <article class="card" style="margin-top: var(--space-md);">
+        <h3>Картка (.card)</h3>
+        <p><strong>Призначення:</strong> Контейнер для візуального відокремлення та групування пов'язаної інформації за гештальт-принципом спільної області.</p>
+        <div class="sg-preview">
+          <div class="card" style="margin: 0; width: 100%; max-width: 350px;">
+            <h4>Звичайна картка</h4>
+            <p>Вміст картки з відступами системи.</p>
+          </div>
+          <div class="card card--accent" style="margin: 0; width: 100%; max-width: 350px;">
+            <h4>Акцентна картка</h4>
+            <p>Для важливих блоків або сайдбарів.</p>
+          </div>
+        </div>
+        <pre><code>&lt;section class="card"&gt;...&lt;/section&gt;
+&lt;section class="card card--accent"&gt;...&lt;/section&gt;</code></pre>
+        <p><strong>Коли НЕ застосовувати:</strong> Не загортати дрібні однорядкові написи; картка призначена для цілісних інформаційних вузлів.</p>
+      </article>
+
+      <!-- Компонент 3: Поле форми -->
+      <article class="card" style="margin-top: var(--space-md);">
+        <h3>Поле форми з підписом</h3>
+        <p><strong>Призначення:</strong> Збір текстових даних користувача із вбудованою доступністю.</p>
+        <div class="sg-preview" style="flex-direction: column; align-items: flex-start;">
+          <label for="demo-input">Електронна пошта *</label>
+          <input type="email" id="demo-input" required placeholder="name@example.com">
+        </div>
+        <pre><code>&lt;label for="email"&gt;Електронна пошта&lt;/label&gt;
+&lt;input type="email" id="email" required&gt;</code></pre>
+        <p><strong>Вимоги доступності:</strong> Зв'язок <code>for + id</code> обов'язковий. Підпис ніколи не замінюється атрибутом <code>placeholder</code>.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Богдан Кунченко, КН-21. Документація дизайн-системи.</p>
+  </footer>
+
+</body>
+</html>
